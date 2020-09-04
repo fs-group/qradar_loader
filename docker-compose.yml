@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+
+  loader:
+    build: .
+    command: 'python3 -u main.py'
+    volumes:
+      - ".:/usr/src/app"
+
+    
