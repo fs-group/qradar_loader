@@ -1,6 +1,6 @@
 **Установки**
 
-1. Установите значения для API_KEY, QRADAR_URL, QRADAR_TOKEN в файле config.py
+1. Установите значения для FS_TI_URL, API_KEY, QRADAR_URL, QRADAR_TOKEN в файле config.py
 
     --API_KEY - токен доступа к fs_ti api
     
