@@ -13,15 +13,9 @@ import urllib3
 urllib3.disable_warnings()
 
 sys.path.extend(['.', '../'])
-from config import (FS_TI_URL, API_KEY, QRADAR_URL, LOAD_BULK, FS_TI_CRIMINAL,
-                    QRADAR_TOKEN, INTERVAL, CHUNK_SIZE, FS_TI_CRIMINAL_WO_CDN,
-                    MAPS)
-
-MAPPING = {
-    'fs_ti': FS_TI_URL,
-    'fs_ti_criminal': FS_TI_CRIMINAL,
-    'fs_ti_criminal_wo_cdn': FS_TI_CRIMINAL_WO_CDN,
-}
+from config import (API_KEY, QRADAR_URL, LOAD_BULK,
+                    QRADAR_TOKEN, INTERVAL, CHUNK_SIZE,
+                    FEEDS, FS_TI_URL)
 
 
 class Loader:
@@ -154,15 +148,18 @@ class Loader:
 
     async def work(self):
         while not self.exit_event.is_set():
-            for map in MAPS:
+            for map, url in FEEDS.items():
+                self.log.info(f'Get data from url {FS_TI_URL}{url}')
                 try:
+
                     req = requests.get(
-                        url=MAPPING.get(map),
+                        url=f'{FS_TI_URL}{url}',
                         headers={'Api-Key': API_KEY,
                                  'Content-Type': 'application/json'},
                         verify=False,
                         timeout=30)
-                    data_gen = [x for x in req.content.decode().split('\n') if x]
+                    data_gen = [x for x in req.content.decode().split('\n')
+                                if x]
                     await self.send(data_gen, map)
                 except Exception as e:
                     self.log.exception(f'Run error: {e}')

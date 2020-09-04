@@ -10,27 +10,15 @@
     
     --INTERVAL - интервал запуска скрипта, по дефолту = 3600(1 час)
     
-    --FS_TI_URL - Url для получения всех ip адресов. Пример:
-    
-            'FS TI URL/api/v2/ti.json'
+    --FS_TI_URL - FS TI апи url
 
-    --FS_TI_CRIMINAL - Url для получения списка ip адресов с criminal=true. Пример:
+    --FEEDS - словарь вида "имя мапы": "запрос". Дефолтное значение
     
-            'FS TI URL/api/v2/ti.json?criminal=true'
-
-    --FS_TI_CRIMINAL_WO_CDN - Url для получения списка ip адресов, где criminal=true
-    и cdn=false
-    
-        'FS TI URL/api/v2/ti.json?criminal=true&cdn=false'
-    
-    --MAPS - список имен мап, которые нужно заполнять. Если какая-то мапа не нужна, ее 
-    нужно удалить из списка. Дефолтное значение
-    
-        [
-            'fs_ti',
-            'fs_ti_criminal',
-            'fs_ti_criminal_wo_cdn'
-        ]
+        {
+            'fs_ti': 'ti.json',
+            'fs_ti_criminal': 'ti.json?criminal=true',
+            'fs_ti_criminal_wo_cdn': 'ti.json?criminal=true&cdn=false'
+        }
 
     --LOAD_BULK - указывает скрипту тип загрузки данных. Если установлен в True -
     данные загружаются через метод апи POST - /reference_data/maps/bulk_load/{name}.
