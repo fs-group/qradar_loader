@@ -1,6 +1,6 @@
 **Установки**
 
-1. Установите значения для API_KEY, QRADAR_URL, QRADAR_TOKEN в файле config.py
+1. Установите значения для FS_TI_URL, API_KEY, QRADAR_URL, QRADAR_TOKEN в файле config.py
 
     --API_KEY - токен доступа к fs_ti api
     
@@ -19,6 +19,7 @@
             'fs_ti_criminal': 'ti.json?criminal=true',
             'fs_ti_criminal_wo_cdn': 'ti.json?criminal=true&cdn=false'
         }
+    возможно удаление запросов, изменение имени коллекции либо создание новых запросов и фильтров на основе FS TI API
 
     --LOAD_BULK - указывает скрипту тип загрузки данных. Если установлен в True -
     данные загружаются через метод апи POST - /reference_data/maps/bulk_load/{name}.
